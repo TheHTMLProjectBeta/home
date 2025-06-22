@@ -41,7 +41,7 @@ img {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    position: relative; /* Added for positioning the menu */
+    position: relative; 
 }
 
 .header a {
@@ -123,7 +123,6 @@ footer img {
     font-size: 16px;
 }
 
-/* Dark mode styles */
 body.dark {
     background-color: #121212;
     color: #f0f2f5;
@@ -146,7 +145,6 @@ body.dark {
     color: white;
 }
 
-/* Toggle button styles */
 .dark-mode-toggle {
     background: none;
     border: none;
@@ -157,18 +155,18 @@ body.dark {
 .dark-mode-toggle img {
     width: 40px;
     height: 40px;
-    border-radius: 0; /* Override img border-radius for toggle icon */
-    margin-bottom: 0; /* Override img margin-bottom for toggle icon */
+    border-radius: 0; 
+    margin-bottom: 0; 
 }
 
-/* Menu styles */
+
 .top-right-menu {
     position: absolute;
     top: 20px;
     right: 20px;
     display: flex;
     align-items: center;
-    gap: 15px; /* Spacing between menu items */
+    gap: 15px; 
 }
 
 .top-right-menu a {
@@ -179,7 +177,7 @@ body.dark {
 }
 
 .top-right-menu a:hover {
-    color: #cccccc; /* Slightly lighter on hover */
+    color: #cccccc; 
 }
 
 
@@ -227,7 +225,7 @@ body.dark {
     background-color: #0056b3;
 }
 
-/* Dark mode specific styles */
+
 body.dark .popup {
     background-color: #2c2c2c;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4),
@@ -252,7 +250,7 @@ body.dark .popup button:hover {
     background-color: #555;
 }
 
-/* Newest games links */
+
 .textbox a {
     color: inherit;
     text-decoration: underline;
@@ -263,7 +261,7 @@ body.dark .popup button:hover {
     color: inherit;
 }
 
-/* Dark Mode styles for links */
+
 body.dark .textbox a {
     color: #f0f2f5;
 }
@@ -272,7 +270,7 @@ body.dark .textbox a:hover {
     color: #ffcc00;
 }
 
-/* Category Titles */
+
 .category h4 {
     color: #333;
     font-weight: bold;
@@ -280,18 +278,18 @@ body.dark .textbox a:hover {
     transition: color 0.3s, font-weight 0.3s, font-size 0.3s;
 }
 
-/* Dark Mode styles for category titles */
+
 body.dark .category h4 {
     color: #e0e0e0;
 }
 
-/* Category Links */
+
 .category a {
     color: #333;
     transition: color 0.3s;
 }
 
-/* Dark Mode styles for category links */
+
 body.dark .category a {
     color: #f0f2f5;
 }
@@ -300,14 +298,12 @@ body.dark h1 {
     color: #e0e0e0;
 }
 
-/* Footer Text */
 footer p {
     color: #333;
     font-size: 14px;
     transition: color 0.3s;
 }
 
-/* Dark Mode styles for footer text */
 body.dark footer p {
     color: #e0e0e0;
 }
