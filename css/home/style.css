@@ -205,12 +205,12 @@ body.dark {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5); /* Dimming background */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
-    display: none; /* Hidden by default */
+    z-index: 9999; /* Increased z-index to be on top of most elements */
+    /* display: none; /* Controlled by JavaScript - do not uncomment */ */
 }
 
 .account-popup-content {
@@ -221,8 +221,9 @@ body.dark {
     width: 90%;
     max-width: 400px;
     position: relative;
-    text-align: center;
+    text-align: center; /* Ensures content is centered horizontally */
     transition: background-color 0.3s, color 0.3s;
+    font-family: 'Noto Sans', sans-serif; /* Ensures consistent font styling */
 }
 
 .account-popup-content .close-popup-btn {
@@ -250,6 +251,8 @@ body.dark {
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
+    width: 100%; /* Ensures the text takes full width for centering */
+    text-align: center; /* Explicitly centers the greeting message */
 }
 
 .account-popup-content .account-options {
@@ -313,7 +316,7 @@ body.dark .account-popup-content .logout-option:hover {
     background-color: #a71d2a;
 }
 
-/* Custom Alert Modal Styles */
+/* Custom Alert Modal Styles (ensure it's on top of the account popup if both were somehow open) */
 .custom-alert-modal-overlay {
     position: fixed;
     top: 0;
@@ -324,8 +327,8 @@ body.dark .account-popup-content .logout-option:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1001; /* Higher than account popup */
-    display: none; /* Hidden by default */
+    z-index: 10000; /* Higher than account popup */
+    /* display: none; /* Controlled by JavaScript - do not uncomment */ */
 }
 
 .custom-alert-modal-content {
@@ -337,6 +340,7 @@ body.dark .account-popup-content .logout-option:hover {
     max-width: 350px;
     text-align: center;
     transition: background-color 0.3s, color 0.3s;
+    font-family: 'Noto Sans', sans-serif; /* Ensures consistent font styling */
 }
 
 .custom-alert-modal-content h2 {
