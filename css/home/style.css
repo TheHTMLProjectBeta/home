@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&display=swap');
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+h1 {
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+img {
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.header img {
+    max-width: 120px;
+    height: auto;
+    max-height: 150px;
+    object-fit: contain;
+}
+
+.header {
+    background-color: gray;
+    color: white;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative; /* Added for positioning the menu */
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.textbox {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.category {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    flex-grow: 1;
+    flex-basis: calc(33.333% - 20px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
+}
+
+.category h4 {
+    color: gray;
+    margin-bottom: 10px;
+}
+
+.category a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    margin: 5px 0;
+}
+
+.category a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 20px;
+    color: #666;
+}
+
+footer img {
+    max-width: 100%;
+}
+
+.search-container {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Dark mode styles */
+body.dark {
+    background-color: #121212;
+    color: #f0f2f5;
+}
+
+.header.dark {
+    background-color: #333;
+}
+
+.textbox.dark, .category.dark {
+    background-color: #1e1e1e;
+    color: #f0f2f5;
+}
+
+.header.dark h1 {
+    color: white;
+}
+
+.container.dark h1 {
+    color: white;
+}
+
+/* Toggle button styles */
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.dark-mode-toggle img {
+    width: 40px;
+    height: 40px;
+    border-radius: 0; /* Override img border-radius for toggle icon */
+    margin-bottom: 0; /* Override img margin-bottom for toggle icon */
+}
+
+/* Menu styles */
+.top-right-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Spacing between menu items */
+}
+
+.top-right-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.top-right-menu a:hover {
+    color: #cccccc; /* Slightly lighter on hover */
+}
+
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2),
+                0 4px 6px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: block;
+    transition: transform 0.3s ease-in-out, background-color 0.3s, color 0.3s;
+}
+
+.popup h2, .popup p {
+    margin: 0 0 15px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.popup a {
+    text-decoration: underline;
+    color: #007BFF;
+    transition: color 0.3s ease;
+}
+
+.popup button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.popup button:hover {
+    background-color: #0056b3;
+}
+
+/* Dark mode specific styles */
+body.dark .popup {
+    background-color: #2c2c2c;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4),
+                0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+body.dark .popup h2,
+body.dark .popup p {
+    color: #f0f2f5;
+}
+
+body.dark .popup a {
+    color: #fff;
+}
+
+body.dark .popup button {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark .popup button:hover {
+    background-color: #555;
+}
+
+/* Newest games links */
+.textbox a {
+    color: inherit;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.textbox a:hover {
+    color: inherit;
+}
+
+/* Dark Mode styles for links */
+body.dark .textbox a {
+    color: #f0f2f5;
+}
+
+body.dark .textbox a:hover {
+    color: #ffcc00;
+}
+
+/* Category Titles */
+.category h4 {
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: color 0.3s, font-weight 0.3s, font-size 0.3s;
+}
+
+/* Dark Mode styles for category titles */
+body.dark .category h4 {
+    color: #e0e0e0;
+}
+
+/* Category Links */
+.category a {
+    color: #333;
+    transition: color 0.3s;
+}
+
+/* Dark Mode styles for category links */
+body.dark .category a {
+    color: #f0f2f5;
+}
+
+body.dark h1 {
+    color: #e0e0e0;
+}
+
+/* Footer Text */
+footer p {
+    color: #333;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+/* Dark Mode styles for footer text */
+body.dark footer p {
+    color: #e0e0e0;
+}
