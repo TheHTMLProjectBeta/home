@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-005PR6H454"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -12,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://assets.thehtmlproject.com/icon.jpeg">
     <title>Home - The HTML Project</title>
-    <link rel="stylesheet" href="https://beta.thehtmlproject.com/css/home/style.css"> <!-- remember to change style when no longer in beta -->
+    <link rel="stylesheet" href="https://beta.thehtmlproject.com/css/home/style.css">
 </head>
 <body>
     <div class="header">
@@ -21,13 +22,37 @@
             <button id="darkModeToggle" class="dark-mode-toggle">
                 <img src="https://assets.thehtmlproject.com/img/dark.jpg" alt="Toggle Dark Mode">
             </button>
-            <a href="#home">Home</a>
-            <a href="#games">Games</a>
-            <a href="#fun">Fun & Extras</a>
-            <a href="#utilities">Utilities</a>
+            <!-- New Account Switcher Button -->
+            <button id="accountSwitcherButton" class="account-switcher-button">Account</button>
         </nav>
     </div>
     
+    <!-- Account Pop-up Structure -->
+    <div id="accountPopup" class="account-popup-overlay">
+        <div class="account-popup-content">
+            <button class="close-popup-btn">&times;</button>
+            <div class="profile-section">
+                <img src="https://placehold.co/100x100/CCCCCC/000000?text=Profile" alt="Profile Picture" class="profile-pic">
+                <p id="greetingMessage" class="greeting-message"></p>
+            </div>
+            <div class="account-options">
+                <a href="#" class="account-option">Edit Profile</a>
+                <a href="#" class="account-option">Settings</a>
+                <a href="#" class="account-option">Switch Accounts</a>
+                <a href="#" class="account-option logout-option">Log Out</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Alert Modal Structure (Replaces native alert()) -->
+    <div id="customAlertModal" class="custom-alert-modal-overlay">
+        <div class="custom-alert-modal-content">
+            <h2 id="customAlertTitle">Message</h2>
+            <p id="customAlertMessage"></p>
+            <button id="customAlertCloseBtn">Close</button>
+        </div>
+    </div>
+
     <div class="container">
         <section id="home"></section>
         <h1>Home</h1>
@@ -72,33 +97,33 @@
             <div class="category">
                 <h4>Arcade & Retro Games</h4>
                 <a href="snake.html">Snake</a>
-                <a href="https://oregontrail.ws/games/the-oregon-trail/play/" target="_blank" onclick="alert('You are leaving The HTML Project. See you later!');">Oregon Trail</a>
+                <a href="https://oregontrail.ws/games/the-oregon-trail/play/" target="_blank" class="trigger-alert" data-message="You are leaving The HTML Project. See you later!">Oregon Trail</a>
                 <a href="ats.html">Aim The Square</a>
                 <a href="flappy.html">Flappy Bird</a>
-                <a href="https://flowlab.io/game/edit/2603658" target="_blank" onclick="alert('You will be launched into an interface that you need to exit to play the game. Press the play icon towards the bottom left of the screen to start playing the game. It is an excellent game BTW. You are leaving The HTML Project. See you later!');">Soulstice (Student Made Game)</a>
+                <a href="https://flowlab.io/game/edit/2603658" target="_blank" class="trigger-alert" data-message="You will be launched into an interface that you need to exit to play the game. Press the play icon towards the bottom left of the screen to start playing the game. It is an excellent game BTW. You are leaving The HTML Project. See you later!">Soulstice (Student Made Game)</a>
                 <a href="pacmanorig.html">Pac-Man Original</a>
             </div>
             <div class="category">
                 <h4>Google Games</h4>
-                <a href="https://g.co/kgs/6vFHhYD" target="_blank" onclick="alert('You are leaving The HTML Project. See you later!');">Katamari</a>
+                <a href="https://g.co/kgs/6vFHhYD" target="_blank" class="trigger-alert" data-message="You are leaving The HTML Project. See you later!">Katamari</a>
                 <a href="gsnake.html">Snake</a>
-                <a href="https://doodles.google/doodle/celebrating-popcorn/" target="_blank" onclick="alert('You are leaving The HTML Project. See you later!');">Popcorn</a>
-                <a href="https://www.google.com/logos/2010/pacman10-hp.html" target="_blank" onclick="alert('You are leaving The HTML Project. See you later!');">Pac-Man</a>
-                <a href="https://www.google.com/logos/2019/july4th19/r6/july4th19.html" target="_blank" onclick="alert('You are leaving The HTML Project. See you later!');">Baseball</a>
-                <a href="https://www.google.com/logos/2024/moon/r3/moon.html" target="_blank" onclick="alert('You are leaving The HTML Project. See you later!');">Moon</a>
+                <a href="https://doodles.google/doodle/celebrating-popcorn/" target="_blank" class="trigger-alert" data-message="You are leaving The HTML Project. See you later!">Popcorn</a>
+                <a href="https://www.google.com/logos/2010/pacman10-hp.html" target="_blank" class="trigger-alert" data-message="You are leaving The HTML Project. See you later!">Pac-Man</a>
+                <a href="https://www.google.com/logos/2019/july4th19/r6/july4th19.html" target="_blank" class="trigger-alert" data-message="You are leaving The HTML Project. See you later!">Baseball</a>
+                <a href="https://www.google.com/logos/2024/moon/r3/moon.html" target="_blank" class="trigger-alert" data-message="You are leaving The HTML Project. See you later!">Moon</a>
                 <a href="glefeud.html">Google Feud (Parody)</a>
             </div>
 
             <div class="category">
                 <h4>Clicker Games</h4>
-                <a href="/game6/" onclick="alert('You are entering into a fullscreen interface because this game cannot be embedded. See you later!);">Cookie Clicker</a>
+                <a href="/game6/" class="trigger-alert" data-message="You are entering into a fullscreen interface because this game cannot be embedded. See you later!">Cookie Clicker</a>
                 <a href="doge.html">Doge Miner</a>
             </div>
             <div class="category">
                 <h4>Racing Games</h4>
                 <a href="templerun2.html">Temple Run 2</a>
                 <a href="subway.html">Subway Surfers</a>
-                <a href="subwayrunner.html">Subway Runner ��</a>
+                <a href="subwayrunner.html">Subway Runner 💀</a>
                 <a href="run3.html">Run 3</a>
                 <a href="tunnel.html">Tunnel Rush</a>
                 <a href="slope.html">Slope Run</a>
@@ -129,7 +154,7 @@
                 <a href="eggy.html">Eggy Car</a>
                 <a href="fnaf.html">Five Nights at Freddy's</a>
                 <a href="fnaf2.html">Five Nights at Freddy's 2</a>
-                <a href="/game23/" target="_blank" onclick="alert('You are entering into a full screen interface. You may also need to reload the page and scroll down about 10 times to get it to work. See you later!');">Super Mario 64</a>
+                <a href="/game23/" target="_blank" class="trigger-alert" data-message="You are entering into a full screen interface. You may also need to reload the page and scroll down about 10 times to get it to work. See you later!">Super Mario 64</a>
                 <a href="bit.html">Bit Life</a>
                 <a href="geometry.html">Geometry Dash (Scratch)</a>
                 <a href="bikeracer.html">Stickman Bike</a>
@@ -146,7 +171,7 @@
                 <a href="hook.html">Stickman Hook</a>
                 <a href="tiny.html">Tiny Fishing</a>
                 <a href="retro.html">Retro Bowl</a>
-                <a href="/game46/" onclick="alert('You are entering into a fullscreen interface because this game cannot be embedded. See you later!);">Retro Bowl College</a>
+                <a href="/game46/" class="trigger-alert" data-message="You are entering into a fullscreen interface because this game cannot be embedded. See you later!">Retro Bowl College</a>
                 <a href="bballstars.html">Basketball Stars</a>
                 <a href="rsd.html">Rocket Soccer Derby</a>
                 <a href="gunspin.html">Gun Spin</a>
@@ -159,8 +184,8 @@
                 <h4>Action & Multiplayer Games</h4>
                 <a href="zombsroyale.html">Zombs Royale</a>
                 <a href="paper.html">Paper .io 2</a>
-                <a href="/game22/" target="_blank" onclick="alert('You are entering into a full screen interface. See you later!');">1v1 .LOL</a>
-                <a href="/game3/file/" target="_blank" onclick="alert('You are entering into a full screen interface. See you later!');">Just Fall .LOL</a>
+                <a href="/game22/" target="_blank" class="trigger-alert" data-message="You are entering into a full screen interface. See you later!">1v1 .LOL</a>
+                <a href="/game3/file/" target="_blank" class="trigger-alert" data-message="You are entering into a full screen interface. See you later!">Just Fall .LOL</a>
                 <a href="slope2plr.html">Slope Multiplayer</a>
                 <a href="bitplanes.html">Bit Planes</a>
                 <a href="amongus.html">Among Us</a>
@@ -176,7 +201,7 @@
                 <a href="hardest.html">World's Hardest Game</a>
                 <a href="bloxorz.html">Bloxorz</a>
                 <a href="blockblast.html">Block Blast</a>
-                <a href="/game25/" target="_blank" onclick="alert('You are entering into a full screen interface. See you later!');">Chess</a>
+                <a href="/game25/" target="_blank" class="trigger-alert" data-message="You are entering into a full screen interface. See you later!">Chess</a>
                 <a href="littlealc2.html">Little Alchemy 2</a>
                 <a href="imposquiz.html">Impossible Quiz</a>
                 <a href="tetris.html">Tetris (Smart)</a>
