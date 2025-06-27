@@ -167,57 +167,25 @@ body.dark .textbox, body.dark .category {
 /* --- Toggle button styles with Liquid Glass Effect (CENTERED at top) --- */
 /* --- Toggle button styles with Liquid Glass Effect (TOP RIGHT) --- */
 .dark-mode-toggle {
-    position: fixed; /* Positions it relative to the viewport (browser window) */
-    top: 10px;       /* Moves it 20px from the top edge of the viewport */
-    right: 10px;     /* Moves it 20px from the right edge of the viewport */
-    
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;  
-    /* This is for its internal elements (like the pseudo-element for the liquid glass effect), not for its placement on the page. */
-    overflow: hidden; /* Hides the pseudo-element when it's outside the button bounds */
-    border-radius: 50%; /* Keeps the button round */
-    width: 44px; /* Sets a fixed width for the button area */
-    height: 44px; /* Sets a fixed height for the button area */
-    z-index: 999; /* Ensures it stays on top of most other content */
+   position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;ures it stays on top of most other content */
 }
 
 /* ... (rest of your .dark-mode-toggle::before, :hover::before, and .material-symbols-outlined styles remain the same) ... */
 
 /* Liquid Glass Pseudo-element */
-.dark-mode-toggle::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%; /* Starts off-screen to the left */
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.3) 50%, /* White highlight for the glass effect */
-        rgba(255, 255, 255, 0) 100%
-    );
-    transform: skewX(-20deg); /* Skews the gradient for a slanted glass look */
-    transition: all 0.4s ease-out; /* Smooth animation for the effect */
-    pointer-events: none; /* Allows clicks to pass through to the button */
-}
+
 
 /* Hover effect: slide the pseudo-element across */
-.dark-mode-toggle:hover::before {
-    left: 100%; /* Slides the highlight fully across to the right */
-}
+
 
 /* Subtle hover background for the button itself */
-.dark-mode-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.1); 
-}
+
 
 /* Material Symbols Outlined base styles */
 .material-symbols-outlined {
