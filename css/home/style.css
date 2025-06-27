@@ -20,6 +20,21 @@ h1 {
     transition: color 0.3s;
 }
 
+/* --- Logo Styling --- */
+#site-logo {
+    max-width: 120px;
+    height: auto;
+    max-height: 150px;
+    object-fit: contain;
+    content: url('https://assets.thehtmlproject.com/icon.jpeg');
+}
+
+/* Dark mode logo when the body has the 'dark' class */
+body.dark #site-logo {
+    content: url('https://assets.thehtmlproject.com/img/logodark.png');
+}
+/* --- End Logo Styling --- */
+
 img {
     border-radius: 8px;
     margin-bottom: 20px;
@@ -41,7 +56,7 @@ img {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    position: relative;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .header a {
@@ -56,13 +71,14 @@ img {
     padding: 20px;
 }
 
+/* Removed background and shadow from .textbox and .category */
 .textbox {
-    background: #ffffff;
+    background: transparent; 
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: none; 
     margin-bottom: 20px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .category-container {
@@ -73,13 +89,13 @@ img {
 }
 
 .category {
-    background: #ffffff;
+    background: transparent;
     border-radius: 8px;
     padding: 15px;
     flex-grow: 1;
     flex-basis: calc(33.333% - 20px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: background-color 0.3s;
+    box-shadow: none; 
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .category h4 {
@@ -101,6 +117,7 @@ img {
 footer {
     margin-top: 20px;
     color: #666;
+    transition: color 0.3s;
 }
 
 footer img {
@@ -123,7 +140,7 @@ footer img {
     font-size: 16px;
 }
 
-/* Dark mode styles */
+/* --- Dark mode styles --- */
 body.dark {
     background-color: #121212;
     color: #f0f2f5;
@@ -133,8 +150,9 @@ body.dark {
     background-color: #333;
 }
 
-.textbox.dark, .category.dark {
-    background-color: #1e1e1e;
+body.dark .textbox, body.dark .category {
+    background-color: transparent;
+    box-shadow: none;
     color: #f0f2f5;
 }
 
@@ -146,256 +164,76 @@ body.dark {
     color: white;
 }
 
-/* Toggle button styles */
+/* --- Toggle button styles with Liquid Glass Effect (CENTERED at top) --- */
+/* --- Toggle button styles with Liquid Glass Effect (TOP RIGHT) --- */
 .dark-mode-toggle {
+    position: fixed; /* Positions it relative to the viewport (browser window) */
+    top: 10px;       /* Moves it 20px from the top edge of the viewport */
+    right: 10px;     /* Moves it 20px from the right edge of the viewport */
+    
     background: none;
     border: none;
     cursor: pointer;
     outline: none;
-}
-
-.dark-mode-toggle img {
-    width: 40px;
-    height: 40px;
-    border-radius: 0;
-    margin-bottom: 0;
-}
-
-/* Top Right Menu styles */
-.top-right-menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    padding: 0;
     display: flex;
     align-items: center;
-    gap: 15px;
+    justify-content: center;
+    transition: background-color 0.3s;  
+    /* This is for its internal elements (like the pseudo-element for the liquid glass effect), not for its placement on the page. */
+    overflow: hidden; /* Hides the pseudo-element when it's outside the button bounds */
+    border-radius: 50%; /* Keeps the button round */
+    width: 44px; /* Sets a fixed width for the button area */
+    height: 44px; /* Sets a fixed height for the button area */
+    z-index: 999; /* Ensures it stays on top of most other content */
 }
 
-.top-right-menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
+/* ... (rest of your .dark-mode-toggle::before, :hover::before, and .material-symbols-outlined styles remain the same) ... */
 
-.top-right-menu a:hover {
-    color: #cccccc;
-}
-
-/* New Account Switcher Button */
-.account-switcher-button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.account-switcher-button:hover {
-    background-color: #0056b3;
-}
-
-/* Account Pop-up Styles */
-.account-popup-overlay {
-    position: fixed;
+/* Liquid Glass Pseudo-element */
+.dark-mode-toggle::before {
+    content: '';
+    position: absolute;
     top: 0;
-    left: 0;
+    left: -100%; /* Starts off-screen to the left */
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dimming background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* Increased z-index to be on top of most elements */
-    /* display: none; /* Controlled by JavaScript - do not uncomment */ */
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%, /* White highlight for the glass effect */
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-20deg); /* Skews the gradient for a slanted glass look */
+    transition: all 0.4s ease-out; /* Smooth animation for the effect */
+    pointer-events: none; /* Allows clicks to pass through to the button */
 }
 
-.account-popup-content {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-    text-align: center; /* Ensures content is centered horizontally */
-    transition: background-color 0.3s, color 0.3s;
-    font-family: 'Noto Sans', sans-serif; /* Ensures consistent font styling */
+/* Hover effect: slide the pseudo-element across */
+.dark-mode-toggle:hover::before {
+    left: 100%; /* Slides the highlight fully across to the right */
 }
 
-.account-popup-content .close-popup-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #333;
+/* Subtle hover background for the button itself */
+.dark-mode-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
 }
 
-.account-popup-content .profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%; /* Make it circular */
-    object-fit: cover;
-    margin-bottom: 15px;
-    border: 2px solid #ddd;
+/* Material Symbols Outlined base styles */
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24; 
+    font-size: 32px;
+    color: white; /* Ensures the icon is always white for visibility on the header */
+    transition: color 0.3s;
+    z-index: 1; /* Ensures the icon appears above the liquid glass effect */
 }
+/* --- End Toggle button styles --- */
 
-.account-popup-content .greeting-message {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-    width: 100%; /* Ensures the text takes full width for centering */
-    text-align: center; /* Explicitly centers the greeting message */
-}
-
-.account-popup-content .account-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.account-popup-content .account-option {
-    display: block;
-    padding: 10px 15px;
-    background-color: #f0f2f5;
-    border-radius: 8px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.account-popup-content .account-option:hover {
-    background-color: #e0e2e5;
-}
-
-.account-popup-content .logout-option {
-    background-color: #dc3545;
-    color: white;
-}
-
-.account-popup-content .logout-option:hover {
-    background-color: #c82333;
-}
-
-/* Dark mode for Account Pop-up */
-body.dark .account-popup-content {
-    background-color: #2c2c2c;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.25);
-}
-
-body.dark .account-popup-content .close-popup-btn {
-    color: #f0f2f5;
-}
-
-body.dark .account-popup-content .greeting-message {
-    color: #f0f2f5;
-}
-
-body.dark .account-popup-content .account-option {
-    background-color: #3a3a3a;
-    color: #f0f2f5;
-}
-
-body.dark .account-popup-content .account-option:hover {
-    background-color: #555;
-}
-
-body.dark .account-popup-content .logout-option {
-    background-color: #bd2130;
-}
-
-body.dark .account-popup-content .logout-option:hover {
-    background-color: #a71d2a;
-}
-
-/* Custom Alert Modal Styles (ensure it's on top of the account popup if both were somehow open) */
-.custom-alert-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000; /* Higher than account popup */
-    /* display: none; /* Controlled by JavaScript - do not uncomment */ */
-}
-
-.custom-alert-modal-content {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    width: 90%;
-    max-width: 350px;
-    text-align: center;
-    transition: background-color 0.3s, color 0.3s;
-    font-family: 'Noto Sans', sans-serif; /* Ensures consistent font styling */
-}
-
-.custom-alert-modal-content h2 {
-    color: #333;
-    margin-bottom: 15px;
-    font-size: 1.5em;
-}
-
-.custom-alert-modal-content p {
-    color: #555;
-    margin-bottom: 25px;
-    font-size: 1.1em;
-    line-height: 1.4;
-}
-
-.custom-alert-modal-content button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.custom-alert-modal-content button:hover {
-    background-color: #0056b3;
-}
-
-/* Dark mode for Custom Alert Modal */
-body.dark .custom-alert-modal-content {
-    background-color: #2c2c2c;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-}
-
-body.dark .custom-alert-modal-content h2 {
-    color: #f0f2f5;
-}
-
-body.dark .custom-alert-modal-content p {
-    color: #cccccc;
-}
-
-body.dark .custom-alert-modal-content button {
-    background-color: #333;
-    color: #f0f2f5;
-}
-
-body.dark .custom-alert-modal-content button:hover {
-    background-color: #555;
-}
-
-
-/* Existing styles from original CSS, adjusted for consistency */
+/* --- Popup styles --- */
 .popup {
     position: fixed;
     top: 50%;
@@ -404,7 +242,8 @@ body.dark .custom-alert-modal-content button:hover {
     background-color: #ffffff;
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 
+                0 4px 6px rgba(0, 0, 0, 0.15);
     z-index: 1000;
     display: block;
     transition: transform 0.3s ease-in-out, background-color 0.3s, color 0.3s;
@@ -439,12 +278,14 @@ body.dark .custom-alert-modal-content button:hover {
     background-color: #0056b3;
 }
 
+/* Dark mode specific styles for popup */
 body.dark .popup {
     background-color: #2c2c2c;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 
+                0 4px 6px rgba(0, 0, 0, 0.25);
 }
 
-body.dark .popup h2,
+body.dark .popup h2, 
 body.dark .popup p {
     color: #f0f2f5;
 }
@@ -461,11 +302,13 @@ body.dark .popup button {
 body.dark .popup button:hover {
     background-color: #555;
 }
+/* --- End Popup styles --- */
 
-/* Newest games links */
+/* --- Link and Text Color Adjustments --- */
+/* The .textbox a rules remain, but the .link-set a rules below will override them for .link-set */
 .textbox a {
     color: inherit;
-    text-decoration: underline;
+    text-decoration: none;
     transition: color 0.3s;
 }
 
@@ -473,7 +316,6 @@ body.dark .popup button:hover {
     color: inherit;
 }
 
-/* Dark Mode styles for links */
 body.dark .textbox a {
     color: #f0f2f5;
 }
@@ -482,26 +324,22 @@ body.dark .textbox a:hover {
     color: #ffcc00;
 }
 
-/* Category Titles */
-.category h4 {
+.category h4, .link-set h3 {
     color: #333;
     font-weight: bold;
     font-size: 1.2em;
     transition: color 0.3s, font-weight 0.3s, font-size 0.3s;
 }
 
-/* Dark Mode styles for category titles */
-body.dark .category h4 {
+body.dark .category h4, body.dark .link-set h3 {
     color: #e0e0e0;
 }
 
-/* Category Links */
 .category a {
     color: #333;
     transition: color 0.3s;
 }
 
-/* Dark Mode styles for category links */
 body.dark .category a {
     color: #f0f2f5;
 }
@@ -510,14 +348,171 @@ body.dark h1 {
     color: #e0e0e0;
 }
 
-/* Footer Text */
 footer p {
     color: #333;
     font-size: 14px;
     transition: color 0.3s;
 }
 
-/* Dark Mode styles for footer text */
+
 body.dark footer p {
     color: #e0e0e0;
 }
+
+
+/* --- End Link and Text Color Adjustments --- */
+
+/* --- Footer Link Styling --- */
+/* --- Footer Link Styling --- */
+footer a {
+    display: block; /* Makes the link take up its own line */
+    margin-top: 10px; /* Adds space above the link */
+    color: #333; /* Changed to match the footer paragraph's color */
+    text-decoration: none; /* Removes default underline */
+    transition: color 0.3s ease; /* Smooth color transition */
+    font-weight: normal; /* Changed to match the footer paragraph's font weight */
+    font-size: 14px; /* Changed to match the footer paragraph's font size */
+}
+
+footer a:hover {
+    color: #0056b3; /* Keeping a subtle color change on hover for usability */
+    text-decoration: none; /* Removed underline on hover for a more consistent look with the paragraph */
+}
+
+/* Dark mode adjustments for footer link */
+body.dark footer a {
+    color: #e0e0e0; /* Changed to match the dark mode footer paragraph's color */
+}
+
+body.dark footer a:hover {
+    color: #b3d4ff; /* Keeping a subtle color change on hover in dark mode */
+    text-decoration: none; /* Removed underline on hover for a more consistent look with the paragraph */
+}
+/* --- End Footer Link Styling --- */
+/* --- End Footer Link Styling --- */
+
+/* --- Content Section Styles (No Gooey Effect on Links, now arrow and underline) --- */
+.content-section {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    width: 80%;
+    max-width: 900px;
+    margin: 40px auto;
+    flex-wrap: wrap;
+    /* Removed filter: url(#gooey); from here as it conflicts with transparent link backgrounds */
+}
+
+.link-set {
+    background-color: transparent; /* Widget background remains transparent */
+    border-radius: 12px;
+    padding: 25px 35px;
+    box-shadow: none;
+    flex: 1; 
+    min-width: 280px; 
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-align: left; 
+}
+
+body.dark .link-set {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.link-set h3 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.6em;
+    color: #4a4a4a;
+    transition: color 0.3s;
+}
+
+body.dark .link-set h3 {
+    color: #f0f2f5;
+}
+
+.link-set ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.link-set li {
+    margin-bottom: 20px;
+}
+
+.link-set li:last-child {
+    margin-bottom: 0;
+}
+
+.link-set a {
+    text-decoration: none; /* Ensure no default underline */
+    display: inline-block; /* Allows padding, width, height, and pseudo-elements */
+    padding: 5px 35px 5px 0; /* Increased padding-right for the arrow */
+    background-color: transparent; /* Button background removed */
+    font-weight: 600;
+    font-size: 1.2em; /* Bigger font size for options */
+    position: relative; /* Needed for pseudo-elements positioning */
+    overflow: hidden; /* Important for hiding the underline outside */
+    transition: color 0.3s; /* Only color transition on the link itself */
+
+    /* Black/white options depending on theme */
+    color: black; /* Default text color for light mode */
+}
+
+body.dark .link-set a {
+    color: white; /* Text color for dark mode */
+}
+
+.link-set a:hover {
+    color: #007bff; /* Highlight color on hover for light mode */
+}
+
+body.dark .link-set a:hover {
+    color: #8ab4f8; /* Highlight color on hover in dark mode */
+}
+
+/* --- Right Arrow Pseudo-element (::before) --- */
+.link-set a::before {
+    content: 'arrow_forward_ios'; /* Material Symbols icon name */
+    font-family: 'Material Symbols Outlined'; /* Apply Material Symbols font */
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24; /* Apply font settings */
+    position: absolute;
+    right: 0; /* Position to the right edge of the link's content box */
+    top: 50%; /* Vertically center */
+    transform: translateY(-50%) translateX(100%); /* Start off-screen to the right */
+    opacity: 0; /* Start hidden */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Smooth transition for arrow movement and visibility */
+    font-size: 1.1em; /* Adjust arrow size if needed relative to link font size */
+    color: inherit; /* Arrow color matches link text color */
+}
+
+.link-set a:hover::before {
+    transform: translateY(-50%) translateX(0); /* Move arrow to visible position */
+    opacity: 1; /* Make arrow visible */
+}
+
+/* --- Cool Underline Animation Pseudo-element (::after) --- */
+.link-set a::after {
+    content: '';
+    position: absolute;
+    width: 0%; /* Start with no width */
+    height: 2px; /* Thickness of the underline */
+    bottom: 0; /* Position at the bottom of the link */
+    left: 0; /* Start from the left */
+    background-color: #007bff; /* Underline color for light mode */
+    transition: width 0.3s ease-out; /* Smooth animation */
+}
+
+.link-set a:hover::after {
+    width: 100%; /* Expand underline to full width on hover */
+}
+
+body.dark .link-set a::after {
+    background-color: #8ab4f8; /* Underline color for dark mode */
+}
+/* --- End Content Section Styles --- */
