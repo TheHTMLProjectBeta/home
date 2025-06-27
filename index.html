@@ -1,256 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-005PR6H454"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-005PR6H454');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-005PR6H454');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://assets.thehtmlproject.com/icon.jpeg">
     <title>Home - The HTML Project</title>
-    <link rel="stylesheet" href="https://beta.thehtmlproject.com/css/home/style.css">
-</head>
+
+    <link rel="stylesheet" href="https://assets.thehtmlproject.com/css/home/style.css"> 
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    </head>
 <body>
     <div class="header">
-        <img src="https://assets.thehtmlproject.com/icon.jpeg" alt="Logo" style="width:120px;height:150px;">
-        <nav class="top-right-menu">
-            <button id="darkModeToggle" class="dark-mode-toggle">
-                <img src="https://assets.thehtmlproject.com/img/dark.jpg" alt="Toggle Dark Mode">
-            </button>
-            <!-- New Account Switcher Button -->
-            <button id="accountSwitcherButton" class="account-switcher-button">Account</button>
-        </nav>
+        <img id="site-logo" src="https://assets.thehtmlproject.com/icon.jpeg" alt="Logo"> 
+        <button id="darkModeToggle" class="dark-mode-toggle">
+            <span class="material-symbols-outlined"></span>
+        </button>
     </div>
     
-    <!-- Account Pop-up Structure -->
-    <div id="accountPopup" class="account-popup-overlay">
-        <div class="account-popup-content">
-            <button class="close-popup-btn">&times;</button>
-            <div class="profile-section">
-                <img src="https://placehold.co/100x100/CCCCCC/000000?text=Profile" alt="Profile Picture" class="profile-pic">
-                <p id="greetingMessage" class="greeting-message"></p>
-            </div>
-            <div class="account-options">
-                <a href="#" class="account-option">Edit Profile</a>
-                <a href="#" class="account-option">Settings</a>
-                <a href="#" class="account-option">Switch Accounts</a>
-                <a href="#" class="account-option logout-option">Log Out</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Custom Alert Modal Structure (Replaces native alert()) -->
-    <div id="customAlertModal" class="custom-alert-modal-overlay">
-        <div class="custom-alert-modal-content">
-            <h2 id="customAlertTitle">Message</h2>
-            <p id="customAlertMessage"></p>
-            <button id="customAlertCloseBtn">Close</button>
-        </div>
-    </div>
-
-    <div class="container">
-        <section id="home"></section>
-        <h1>Home</h1>
-        <div class="category-container">
-            <div class="category">
-                <h2>⚠️⚠️⚠️ Message 4/29/2025 ⚠️⚠️⚠️</h2>
-                <p>Join The HTML Project's Discord server! You can get help if you don't know how to operate something on my site, or you can just chill and chat with everyone! <a href="https://discord.gg/JNsnDXug8y" style="text-decoration: underline;">Click here to join it!</a></p>
-            </div>
-            <div class="category">
-                <h3>Newest games:</h3><strong><a href="johnnyupgrade.html">Johnny Upgrade</a>
-                <a href="funnyshooter.html">Funny Shooter</a>
-                <a href="timeshooter3.html">Time Shooter 3</a>
-                <a href="hoverracerdrive.html">Hover Racer Drive</a>
-                <a href="deepestsword.html">Deepest Sword</a>
-<p>____________________________________________________________</p>
-                <p>Last updated on 5/13/2025</p>
-                <p>v2.4.0: MultiWeb, browse anything.</p>
-            </div>
-        </div>
-
-        <section id="games"></section>
-        <h2>Games</h2>
-        <div class="search-container">
-            <input id="searchInput" type="text" class="search-input" placeholder="Search games...">
-        </div>
-        <div class="category-container">
-            <div class="category">
-                <h4>OvO Games</h4>
-                <a href="ovo.html">OvO Game</a>
-                <a href="ovo2.html">OvO 2</a>
-                <a href="ovomulti.html">OvO Multiplayer</a>
-            </div>
-            <div class="category">
-                <h4>MotoX3M Games</h4>
-                <a href="motox3mwinter.html">MotoX3M Winter</a>
-                <a href="spooky.html">MotoX3M Spooky</a>
-                <a href="poolparty.html">MotoX3M Pool Party</a>
-                <a href="motox3m3.html">MotoX3M</a>
-                <a href="motox3m33.html">MotoX3M 3</a>
-                <a href="motox3m2.html">MotoX3M 2</a>
-            </div>
-            <div class="category">
-                <h4>Arcade & Retro Games</h4>
-                <a href="snake.html">Snake</a>
-                <a href="https://oregontrail.ws/games/the-oregon-trail/play/" target="_blank" class="trigger-alert" data-message="You are leaving The HTML Project. See you later!">Oregon Trail</a>
-                <a href="ats.html">Aim The Square</a>
-                <a href="flappy.html">Flappy Bird</a>
-                <a href="https://flowlab.io/game/edit/2603658" target="_blank" class="trigger-alert" data-message="You will be launched into an interface that you need to exit to play the game. Press the play icon towards the bottom left of the screen to start playing the game. It is an excellent game BTW. You are leaving The HTML Project. See you later!">Soulstice (Student Made Game)</a>
-                <a href="pacmanorig.html">Pac-Man Original</a>
-            </div>
-            <div class="category">
-                <h4>Google Games</h4>
-                <a href="https://g.co/kgs/6vFHhYD" target="_blank" class="trigger-alert" data-message="You are leaving The HTML Project. See you later!">Katamari</a>
-                <a href="gsnake.html">Snake</a>
-                <a href="https://doodles.google/doodle/celebrating-popcorn/" target="_blank" class="trigger-alert" data-message="You are leaving The HTML Project. See you later!">Popcorn</a>
-                <a href="https://www.google.com/logos/2010/pacman10-hp.html" target="_blank" class="trigger-alert" data-message="You are leaving The HTML Project. See you later!">Pac-Man</a>
-                <a href="https://www.google.com/logos/2019/july4th19/r6/july4th19.html" target="_blank" class="trigger-alert" data-message="You are leaving The HTML Project. See you later!">Baseball</a>
-                <a href="https://www.google.com/logos/2024/moon/r3/moon.html" target="_blank" class="trigger-alert" data-message="You are leaving The HTML Project. See you later!">Moon</a>
-                <a href="glefeud.html">Google Feud (Parody)</a>
-            </div>
-
-            <div class="category">
-                <h4>Clicker Games</h4>
-                <a href="/game6/" class="trigger-alert" data-message="You are entering into a fullscreen interface because this game cannot be embedded. See you later!">Cookie Clicker</a>
-                <a href="doge.html">Doge Miner</a>
-            </div>
-            <div class="category">
-                <h4>Racing Games</h4>
-                <a href="templerun2.html">Temple Run 2</a>
-                <a href="subway.html">Subway Surfers</a>
-                <a href="subwayrunner.html">Subway Runner 💀</a>
-                <a href="run3.html">Run 3</a>
-                <a href="tunnel.html">Tunnel Rush</a>
-                <a href="slope.html">Slope Run</a>
-                <a href="slope3.html">Slope 3</a>
-                <a href="surf.html">Edge Surf</a>
-            </div>
+    <div class="content-section">
+        <div class="link-set">
             
-            <div class="category">
-                <h4>Racing and Driving Games</h4>
-                <a href="drift.html">Drift Boss</a>
-                <a href="snow.html">Snowball .io</a>
-                <a href="scrap.html">Scrap Metal 3</a>
-                <a href="slowroads.html">Slow Roads .io</a>
-                <a href="clustertruck.html">Clustertruck</a>
-                <a href="monster.html">Monster Tracks</a>
-                <a href="jelly.html">Jelly Truck</a>
-                <a href="drivemad.html">Drive Mad</a>
-                <a href="hoverracerdrive.html">Hover Racer Drive</a>
-            </div>
-            <div class="category">
-                <h4>Platform and Adventure Games</h4>
-                <a href="pvz.html">Plants vs. Zombies</a>
-                <a href="sandgame.html">Sand Game</a>
-                <a href="getaway.html">Getaway Shootout</a>
-                <a href="hole.html">Hole .io</a>
-                <a href="deepestsword.html">Deepest Sword</a>
-                <a href="smash.html">Stack Ball</a>
-                <a href="eggy.html">Eggy Car</a>
-                <a href="fnaf.html">Five Nights at Freddy's</a>
-                <a href="fnaf2.html">Five Nights at Freddy's 2</a>
-                <a href="/game23/" target="_blank" class="trigger-alert" data-message="You are entering into a full screen interface. You may also need to reload the page and scroll down about 10 times to get it to work. See you later!">Super Mario 64</a>
-                <a href="bit.html">Bit Life</a>
-                <a href="geometry.html">Geometry Dash (Scratch)</a>
-                <a href="bikeracer.html">Stickman Bike</a>
-                <a href="johnnyupgrade.html">Johnny Upgrade</a>
-            </div>
-            <div class="category">
-                <h4>Sports and Simulation Games</h4>
-                <a href="crazycattle3d">Crazy Cattle 3D</a>
-                <a href="boxing.html">Boxing Random</a>
-                <a href="basket.html">Basket Random</a>
-                <a href="volleyball.html">Volleyball Random</a>
-                <a href="friday.html">Friday Night Funkin'</a>
-                <a href="sausage.html">Sausage Flip</a>
-                <a href="hook.html">Stickman Hook</a>
-                <a href="tiny.html">Tiny Fishing</a>
-                <a href="retro.html">Retro Bowl</a>
-                <a href="/game46/" class="trigger-alert" data-message="You are entering into a fullscreen interface because this game cannot be embedded. See you later!">Retro Bowl College</a>
-                <a href="bballstars.html">Basketball Stars</a>
-                <a href="rsd.html">Rocket Soccer Derby</a>
-                <a href="gunspin.html">Gun Spin</a>
-                <a href="sushiria.html">Papa's Sushiria</a>
-                <a href="papaspizzaria.html">Papa's Pizzaria</a>
-                <a href="papasburgeria.html">Papa's Burgeria</a>
-                <a href="basketbros.html">Basket Bros</a>
-            </div>
-            <div class="category">
-                <h4>Action & Multiplayer Games</h4>
-                <a href="zombsroyale.html">Zombs Royale</a>
-                <a href="paper.html">Paper .io 2</a>
-                <a href="/game22/" target="_blank" class="trigger-alert" data-message="You are entering into a full screen interface. See you later!">1v1 .LOL</a>
-                <a href="/game3/file/" target="_blank" class="trigger-alert" data-message="You are entering into a full screen interface. See you later!">Just Fall .LOL</a>
-                <a href="slope2plr.html">Slope Multiplayer</a>
-                <a href="bitplanes.html">Bit Planes</a>
-                <a href="amongus.html">Among Us</a>
-                <a href="burrito.html">BurritoCraft</a>
-                <a href="bison.html">Burrito Bison</a>
-                <a href="aim.html">Aim Trainer</a>
-                <a href="timeshooter3.html">Time Shooter 3</a>
-                <a href="funnyshooter.html">Funny Shooter</a>
-            </div>
-            <div class="category">
-                <h4>Puzzle Games</h4>
-                <a href="2048.html">2048</a>
-                <a href="hardest.html">World's Hardest Game</a>
-                <a href="bloxorz.html">Bloxorz</a>
-                <a href="blockblast.html">Block Blast</a>
-                <a href="/game25/" target="_blank" class="trigger-alert" data-message="You are entering into a full screen interface. See you later!">Chess</a>
-                <a href="littlealc2.html">Little Alchemy 2</a>
-                <a href="imposquiz.html">Impossible Quiz</a>
-                <a href="tetris.html">Tetris (Smart)</a>
-                <a href="tetrisclassic.html">Tetris (Classic)</a>
-                <a href="twitchtet.html">Twitch Tetris</a>
-            </div>
+            <ul>
+                <li><a href="#">MultiWeb, browse anything</a></li>
+                <li><a href="#">EmulatorJS</a></li>
+                <li><a href="#">Join the THP Discord Server</a></li>
+                <li><a href="#">Meme Soundboard</a></li>
+                <li><a href="#">The classic THP</a></li>
+                <!-- <li><a href="#">Control my LED</a></li>
+                 <li><a href="#">Lunarsync</a></li>
+                   <li><a href="#">Invidious, YouTube unblocked</a></li>
+            -->
+            </ul>
         </div>
-        <section id="fun"></section>
-        <h2>Fun & Extras</h2>
-        <div class="category-container">
-            <div class="category">
-                <a href="https://discord.gg/JNsnDXug8y">Join The HTML Project's Discord Server</a>
-                <a href="https://sites.google.com/view/thehtmlprojectemulatorjs/home">EmulatorJS</a>
-                <a href="https://tlk.io/thehtmlprojectchat">The HTML Project Chat</a>
-                <a href="https://sites.google.com/view/thehtmlprojectmultiweb/home">MultiWeb, browse anything.</a>
-                <a href="http://thehtmlproject.ddns.net:1111/">Control my LED</a>
-                <a href="/theoldproject/index.html" target="_blank">The Very First Version of my Website</a>
-                <a href="https://www.youtube.com/watch?v=ufwLANtaFfI" target="_blank">Definitely NOT a Rick Roll</a>
-                <a href="https://thehtmlproject1.github.io/redirectsl/bookmark.html" style="color: yellow;">The Link That Will ALWAYS Redirect Here</a>
-                <a href="/extras/index.html">More Tools (The Special Place, Game Masker)</a>
-                <a href="mailto:contact@thehtmlproject.com">Email Me</a>
-                <a href="/allmygames/soundboard" target="_blank">Meme Soundboard</a>
-                <a href="invidious.html">Invidious - YouTube Unblocked</a>
-                <a href="https://linktr.ee/asherthetechkid" target="_blank" rel="noopener noreferrer">Sub to my YouTube on my Linktree</a>
-                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZURTRTUU1MMlNaN0ozSVU1U0g3RE9ZMEZGUC4u" target="_blank">Request a Game</a>
-                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZUN1owVTQ0RzBHMVJVUDlMVUc5MzdaNENHMi4u" target="_blank">Report a Bug</a>
-            </div>
-        </div>
-        <section id="utilities"></section>
-        <h2>Utilities</h2>
-        <div class="category-container">
-            <div class="category">
-                <a href="calc.html">Calculator</a>
-                <a href="map.html">Map</a>
-                <a href="timer.html">Timer</a>
-                <a href="scrchoose.html">Screensavers</a>
-            </div>
+        <div class="link-set">
+            
+            <ul>
+                <li><a href="#">Definately NOT a Rickroll</a></li>
+                <li><a href="#">Other THP access links</a></li>
+                <li><a href="#">About:Blank masker</a></li>
+                <li><a href="#">Contact me</a></li>
+                <li><a href="#">My Linktree</a></li>
+               
+            </ul>
         </div>
     </div>
-    
+
     <h2>People Count</h2>
     <footer>
         <section id="people"></section>
-        <a href="https://www.digits.net" target="_blank">
-            <img src="https://counter.digits.net/?counter={39c382c5-39a1-7604-d558-6161ab6f43d6}&template=simple"
-                alt="Hit Counter by Digits">
-        </a>
         <p>Made with 💚 by Asher from The HTML Project</p>
+        <a href="#">Report a Bug</a>
     </footer>
-    <script src="https://beta.thehtmlproject.com/js/home/script.js"></script>
+
+    <script src="https://assets.thehtmlproject.com/script/home/script.js"></script>
 </body>
 </html>
