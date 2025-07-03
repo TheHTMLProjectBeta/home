@@ -6,153 +6,10 @@
   <title>Home - The HTML Project</title>
   <link rel="icon" href="https://assets.thehtmlproject.com/icon.jpeg" />
 
-  <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
-  <style>
-    body {
-      font-family: 'Noto Sans', sans-serif;
-      background-color: #fff;
-      color: #222;
-      margin: 0;
-      padding: 0;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .header {
-      background-color: gray;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      position: relative;
-    }
-
-    #site-logo {
-      max-width: 120px;
-      height: auto;
-    }
-
-    .dark-mode-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 5px;
-    }
-
-    .material-symbols-outlined {
-      font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24;
-      font-size: 32px;
-      transition: opacity 0.5s ease;
-    }
-
-    .link-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-
-    .link-button {
-      position: relative;
-      flex: 1 1 280px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 60px;
-      background-color: #fff;
-      color: #222;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 18px;
-      border: 1px solid #ccc;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-      font-family: 'Noto Sans', sans-serif;
-      overflow: hidden;
-    }
-
-    .link-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-    }
-
-    .link-button:active {
-      transform: scale(0.98);
-    }
-
-    .check-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: none;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    body.light .check-icon {
-      color: #000;
-    }
-
-    body.dark .check-icon {
-      color: #fff;
-    }
-
-    .blur {
-      filter: blur(2px);
-    }
-
-    .fadeOut {
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 14px;
-      color: #666;
-    }
-
-    footer a {
-      color: inherit;
-      text-decoration: underline;
-    }
-
-    body.dark {
-      background-color: #121212;
-      color: #f0f2f5;
-    }
-
-    body.dark .header {
-      background-color: #333;
-    }
-
-    body.dark .link-button {
-      background-color: #1e1e1e;
-      color: #f0f2f5;
-      border-color: #444;
-    }
-
-    body.dark .link-button:hover {
-      box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
-    }
-
-    body.dark .material-symbols-outlined {
-      color: #f0f2f5;
-    }
-  </style>
+  <link rel="stylesheet" href="https://assets.thehtmlproject.com/css/index/style.css">
 </head>
 <body class="light">
   <div class="header">
@@ -171,7 +28,7 @@
       <span id="discordCheck" class="material-symbols-outlined check-icon">check</span>
     </button>
 
-    <a href="#" class="link-button">Meme Soundboard</a>
+   // <a href="#" class="link-button">Meme Soundboard</a>
     <a href="#" class="link-button">The classic THP</a>
     <a href="#" class="link-button">Play Games</a>
     <a href="#" class="link-button">Definitely NOT a Rickroll</a>
@@ -186,71 +43,6 @@
     <a href="#">Report a Bug</a>
   </footer>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggleButton = document.getElementById("darkModeToggle");
-      const toggleIcon = document.getElementById("modeIcon");
-      const body = document.body;
-
-      function enableDarkMode() {
-        body.classList.add("dark");
-        body.classList.remove("light");
-        toggleIcon.textContent = "light_mode";
-        localStorage.setItem("darkMode", "true");
-      }
-
-      function disableDarkMode() {
-        body.classList.remove("dark");
-        body.classList.add("light");
-        toggleIcon.textContent = "dark_mode";
-        localStorage.setItem("darkMode", "false");
-      }
-
-      const savedMode = localStorage.getItem("darkMode");
-      if (savedMode === "true") enableDarkMode();
-      else if (savedMode === "false") disableDarkMode();
-      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) enableDarkMode();
-
-      toggleButton.addEventListener("click", () => {
-        body.classList.contains("dark") ? disableDarkMode() : enableDarkMode();
-      });
-
-      const joinBtn = document.getElementById("discordJoinBtn");
-      const checkIcon = document.getElementById("discordCheck");
-      const text = document.getElementById("discordText");
-
-      if (localStorage.getItem("joinedDisco r d") === "true") {
-        joinBtn.style.display = "none";
-      }
-
-      let waitingForReturn = false;
-
-      joinBtn.addEventListener("click", () => {
-        window.open("https://discord.thehtmlproject.com", "_blank");
-        waitingForReturn = true;
-        joinBtn.classList.add("blur");
-      });
-
-      window.addEventListener("focus", () => {
-        if (waitingForReturn) {
-          waitingForReturn = false;
-
-          setTimeout(() => {
-            text.style.display = "none";
-            checkIcon.style.display = "inline-block";
-          }, 800);
-
-          setTimeout(() => {
-            joinBtn.classList.add("fadeOut");
-          }, 1800);
-
-          setTimeout(() => {
-            joinBtn.style.display = "none";
-            localStorage.setItem("joinedDiscord", "true");
-          }, 3000);
-        }
-      });
-    });
-  </script>
+  <script src="https://assets.thehtmlproject.com/script/index/script.js"></script>
 </body>
 </html>
