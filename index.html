@@ -5,45 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home - The HTML Project</title>
   <link rel="icon" href="https://assets.thehtmlproject.com/icon.jpeg" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&display=swap');
 
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+  <style>
     body {
       font-family: 'Noto Sans', sans-serif;
-      background-color: #f9f6ef;
-      color: #333333;
+      background-color: #fff;
+      color: #222;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: background-color 0.3s, color 0.3s;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .header {
-      background-color: #666;
+      background-color: gray;
       color: white;
-      width: 100%;
+      text-align: center;
       padding: 20px;
       position: relative;
     }
 
-    .header img {
+    #site-logo {
       max-width: 120px;
       height: auto;
     }
 
-    #site-logo {
-      content: url('https://assets.thehtmlproject.com/icon.jpeg');
-    }
-
-    body.dark #site-logo {
-      content: url('https://assets.thehtmlproject.com/img/logodark.png');
-    }
-
-    /* Dark mode toggle small icon button */
     .dark-mode-toggle {
       position: absolute;
       top: 20px;
@@ -52,110 +41,88 @@
       border: none;
       cursor: pointer;
       padding: 5px;
-      border-radius: 6px;
-      transition: background-color 0.3s;
     }
-    .dark-mode-toggle:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-    body.dark .dark-mode-toggle:hover {
-      background-color: rgba(0, 0, 0, 0.2);
-    }
+
     .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
       font-size: 32px;
-      color: white;
-      user-select: none;
-      pointer-events: none;
-      transition: color 0.3s;
-    }
-    body.dark .material-symbols-outlined {
-      color: #f0f2f5;
-    }
-    body:not(.dark) .material-symbols-outlined {
-      color: #333;
+      transition: opacity 0.5s ease;
     }
 
-    .content-section {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      margin: 40px auto;
-    }
-
-    .link-list {
+    .link-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      list-style: none;
-      gap: 20px;
-      max-width: 1000px;
-      padding: 0;
-      margin: 0 auto;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
     }
 
-    .link-list li {
-      flex: 1 1 200px;
+    .link-button {
+      position: relative;
+      flex: 1 1 280px;
       display: flex;
       justify-content: center;
-    }
-
-    /* Body buttons */
-    .link-list a {
-      height: 50px;
-      min-width: 180px;
-      padding: 0 20px;
-      background: #fff;
-      display: inline-flex;
-      justify-content: center;
       align-items: center;
-      cursor: pointer;
-      font-family: 'Noto Sans', sans-serif;
-      border: solid #ccc 1px;
-      font-size: 16px;
+      height: 60px;
+      background-color: #fff;
       color: #222;
-      transition: 500ms;
-      border-radius: 5px;
-      box-shadow:
-        2px 2px 5px rgba(0,0,0,0.1),
-        inset 1px 1px 2px rgba(255,255,255,0.8);
+      border-radius: 10px;
       text-decoration: none;
-      user-select: none;
-      white-space: nowrap;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      font-family: 'Noto Sans', sans-serif;
+      overflow: hidden;
     }
 
-    .link-list a:hover {
-      box-shadow:
-        0 0 12px rgba(0,0,0,0.2),
-        inset 1px 1px 3px rgba(255,255,255,0.9);
-      color: #111;
+    .link-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
     }
 
-    .link-list a:active {
-      box-shadow:
-        0 0 20px rgba(0,0,0,0.25),
-        inset 1px 1px 3px rgba(255,255,255,1);
-      color: #111;
-      transition: 100ms;
+    .link-button:active {
+      transform: scale(0.98);
     }
 
-    h2 {
-      margin: 40px 0 10px 0;
-      font-weight: normal;
+    .check-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 2;
+      pointer-events: none;
     }
 
-    #people {
-      margin: 0;
+    body.light .check-icon {
+      color: #000;
+    }
+
+    body.dark .check-icon {
+      color: #fff;
+    }
+
+    .blur {
+      filter: blur(2px);
+    }
+
+    .fadeOut {
+      opacity: 0;
+      transition: opacity 1s ease;
     }
 
     footer {
-      margin-top: 30px;
-      padding: 20px;
-      color: #666;
+      text-align: center;
+      padding: 30px 20px;
       font-size: 14px;
-    }
-
-    footer p {
-      margin: 10px 0;
+      color: #666;
     }
 
     footer a {
@@ -163,11 +130,6 @@
       text-decoration: underline;
     }
 
-    footer a:hover {
-      color: #111;
-    }
-
-    /* DARK MODE */
     body.dark {
       background-color: #121212;
       color: #f0f2f5;
@@ -177,76 +139,48 @@
       background-color: #333;
     }
 
+    body.dark .link-button {
+      background-color: #1e1e1e;
+      color: #f0f2f5;
+      border-color: #444;
+    }
+
+    body.dark .link-button:hover {
+      box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+    }
+
     body.dark .material-symbols-outlined {
       color: #f0f2f5;
     }
-
-    body.dark .link-list a {
-      background: #333333;
-      border-color: #888;
-      color: #f0f2f5;
-      box-shadow:
-        -1px -5px 15px #555,
-        5px 5px 15px #555,
-        inset 5px 5px 10px #555,
-        inset -5px -5px 10px #555;
-    }
-
-    body.dark .link-list a:hover {
-      box-shadow:
-        0 0 10px white,
-        inset 1px 1px 5px #888,
-        inset -1px -1px 5px #888;
-      color: #fff;
-    }
-
-    body.dark .link-list a:active {
-      box-shadow:
-        0 0 20px white,
-        inset 1px 1px 5px #aaa,
-        inset -1px -1px 5px #aaa;
-      color: #fff;
-      transition: 100ms;
-    }
-
-    body.dark footer a:hover {
-      color: #fff;
-    }
   </style>
 </head>
-
-<body>
+<body class="light">
   <div class="header">
     <img id="site-logo" src="https://assets.thehtmlproject.com/icon.jpeg" alt="Logo" />
-    <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-      <span class="material-symbols-outlined">dark_mode</span>
+    <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle dark mode">
+      <span class="material-symbols-outlined" id="modeIcon">dark_mode</span>
     </button>
   </div>
 
-  <div class="content-section">
-    <ul class="link-list" role="list">
-      <li><a href="#">MultiWeb, browse anything</a></li>
-      <li><a href="#">EmulatorJS</a></li>
-      <li><a href="#">Join the THP Discord Server</a></li>
-      <li><a href="#">Meme Soundboard</a></li>
-      <li><a href="#">The classic THP</a></li>
-      <li><a href="#">Play Games</a></li>
-      <li><a href="#">Definitely NOT a Rickroll</a></li>
-      <li><a href="#">Other THP access links</a></li>
-      <li><a href="#">About:Blank masker</a></li>
-      <li><a href="#">Contact me</a></li>
-      <li><a href="#">My Linktree</a></li>
-    </ul>
+  <div class="link-grid">
+    <a href="#" class="link-button">MultiWeb, browse anything</a>
+    <a href="#" class="link-button">EmulatorJS</a>
+
+    <button id="discordJoinBtn" class="link-button">
+      <span id="discordText">Join the THP Discord Server</span>
+      <span id="discordCheck" class="material-symbols-outlined check-icon">check</span>
+    </button>
+
+    <a href="#" class="link-button">Meme Soundboard</a>
+    <a href="#" class="link-button">The classic THP</a>
+    <a href="#" class="link-button">Play Games</a>
+    <a href="#" class="link-button">Definitely NOT a Rickroll</a>
+    <a href="#" class="link-button">Other THP access links</a>
+    <a href="#" class="link-button">About:Blank masker</a>
+    <a href="#" class="link-button">Contact me</a>
+    <a href="#" class="link-button">My Linktree</a>
   </div>
 
-  <h2>People Count</h2>
-  <section id="people">
-    <a href="https://www.digits.net" target="_blank" rel="noopener noreferrer">
-      <img src="https://counter.digits.net/?counter={39c382c5-39a1-7604-d558-6161ab6f43d6}&template=simple"
-           alt="Hit Counter by Digits" />
-    </a>
-  </section>
-  
   <footer>
     <p>Made with 💚 by Asher from The HTML Project</p>
     <a href="#">Report a Bug</a>
@@ -255,39 +189,65 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const toggleButton = document.getElementById("darkModeToggle");
+      const toggleIcon = document.getElementById("modeIcon");
       const body = document.body;
-      const toggleIcon = toggleButton.querySelector(".material-symbols-outlined");
 
       function enableDarkMode() {
         body.classList.add("dark");
+        body.classList.remove("light");
         toggleIcon.textContent = "light_mode";
         localStorage.setItem("darkMode", "true");
       }
 
       function disableDarkMode() {
         body.classList.remove("dark");
+        body.classList.add("light");
         toggleIcon.textContent = "dark_mode";
         localStorage.setItem("darkMode", "false");
       }
 
       const savedMode = localStorage.getItem("darkMode");
-      if (savedMode === "true") {
-        enableDarkMode();
-      } else if (savedMode === "false") {
-        disableDarkMode();
-      } else {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          enableDarkMode();
-        } else {
-          disableDarkMode();
-        }
+      if (savedMode === "true") enableDarkMode();
+      else if (savedMode === "false") disableDarkMode();
+      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) enableDarkMode();
+
+      toggleButton.addEventListener("click", () => {
+        body.classList.contains("dark") ? disableDarkMode() : enableDarkMode();
+      });
+
+      const joinBtn = document.getElementById("discordJoinBtn");
+      const checkIcon = document.getElementById("discordCheck");
+      const text = document.getElementById("discordText");
+
+      if (localStorage.getItem("joinedDisco r d") === "true") {
+        joinBtn.style.display = "none";
       }
 
-      toggleButton.addEventListener("click", function () {
-        if (body.classList.contains("dark")) {
-          disableDarkMode();
-        } else {
-          enableDarkMode();
+      let waitingForReturn = false;
+
+      joinBtn.addEventListener("click", () => {
+        window.open("https://discord.thehtmlproject.com", "_blank");
+        waitingForReturn = true;
+        joinBtn.classList.add("blur");
+      });
+
+      window.addEventListener("focus", () => {
+        if (waitingForReturn) {
+          waitingForReturn = false;
+
+          setTimeout(() => {
+            text.style.display = "none";
+            checkIcon.style.display = "inline-block";
+          }, 800);
+
+          setTimeout(() => {
+            joinBtn.classList.add("fadeOut");
+          }, 1800);
+
+          setTimeout(() => {
+            joinBtn.style.display = "none";
+            localStorage.setItem("joinedDiscord", "true");
+          }, 3000);
         }
       });
     });
