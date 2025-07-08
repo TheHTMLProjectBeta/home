@@ -5,11 +5,260 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home - The HTML Project</title>
   <link rel="icon" href="https://assets.thehtmlproject.com/icon.jpeg" />
-
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
-  <link rel="stylesheet" href="https://assets.thehtmlproject.com/css/index/style.css">
+  <style>
+    body {
+      font-family: 'Noto Sans', sans-serif;
+      background-color: #fff;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .header {
+      background-color: gray;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    #site-logo {
+      max-width: 120px;
+      height: auto;
+    }
+
+    .dark-mode-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+      font-size: 32px;
+      transition: opacity 0.5s ease;
+    }
+
+    .content-area {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      gap: clamp(30px, 4vw, 60px);
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+      align-items: start;
+    }
+
+    .my-message-box {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      padding: 25px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      text-align: left;
+      border: 1px solid #eee;
+      position: relative;
+    }
+
+    /* Blue update indicator dot */
+    .update-indicator {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 14px;
+      height: 14px;
+      background-color: #007bff; /* blue */
+      border-radius: 50%;
+      box-shadow: 0 0 6px #007bff88;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+    .update-indicator.show {
+      opacity: 1;
+    }
+
+    .changelog-link {
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+      font-size: 14px;
+      color: #666;
+      text-decoration: underline;
+      z-index: 1;
+    }
+
+    .changelog-link:hover {
+      color: #333;
+    }
+
+    /* Grid container for all buttons including Contact me */
+    .main-links-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px 15px;
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+
+    .my-message-box h3 {
+      margin-top: 0;
+      color: #333;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .my-message-box p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    /* Unified button styles for anchors and buttons */
+    .link-button,
+    button.link-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 60px;
+      background-color: #fff;
+      color: #222;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 19px;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      font-family: 'Noto Sans', sans-serif;
+      overflow: hidden;
+      width: 100%;
+      padding: 6px 14px;
+      box-sizing: border-box;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .link-button:hover,
+    button.link-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .link-button:active,
+    button.link-button:active {
+      transform: scale(0.97);
+    }
+
+    .check-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    body.light .check-icon {
+      color: #000;
+    }
+
+    body.dark .check-icon {
+      color: #fff;
+    }
+
+    .blur {
+      filter: blur(2px);
+    }
+
+    .fadeOut {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+      color: #666;
+      margin-top: auto;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    /* Dark mode styles */
+    body.dark {
+      background-color: #121212;
+      color: #f0f2f5;
+    }
+
+    body.dark .header {
+      background-color: #333;
+    }
+
+    body.dark .link-button {
+      background-color: #1e1e1e;
+      color: #f0f2f5;
+      border-color: #444;
+    }
+
+    body.dark .link-button:hover {
+      box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark .material-symbols-outlined {
+      color: #f0f2f5;
+    }
+
+    body.dark .my-message-box {
+      background-color: #1a1a1a;
+      border-color: #333;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+    }
+
+    body.dark .my-message-box h3 {
+      color: #f0f2f5;
+    }
+
+    body.dark .my-message-box p {
+      color: #ccc;
+    }
+
+    body.dark .changelog-link {
+      color: #ccc;
+    }
+
+    body.dark .changelog-link:hover {
+      color: #f0f2f5;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .main-links-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+    }
+  </style>
 </head>
 <body class="light">
   <div class="header">
@@ -19,30 +268,122 @@
     </button>
   </div>
 
-  <div class="link-grid">
- //   <a href="#" class="link-button">MultiWeb, browse anything</a>
-//    <a href="#" class="link-button">EmulatorJS</a>
+  <div class="content-area">
+    <div class="my-message-box" id="messageBox">
+      <div class="update-indicator" id="updateIndicator"></div>
+      <h3>A Message from Asher:</h3>
+      <p id="messageText">
+        Hey everyone! I'm constantly working to improve The HTML Project and bring you new features and content. Your support means the world to me. If you have any suggestions or find any bugs, please use the "Report a Bug" link in the footer. Thanks for being awesome!
+      </p>
+      <a href="#" class="changelog-link">View Changelog</a>
+    </div>
 
-    <button id="discordJoinBtn" class="link-button">
-      <span id="discordText">Join the THP Discord Server</span>
-      <span id="discordCheck" class="material-symbols-outlined check-icon">check</span>
-    </button>
-
-   // <a href="#" class="link-button">Meme Soundboard</a>
-    <a href="https://classic.thehtmlproject.com" class="link-button">The classic THP</a>
-    <a href="https://games.thehtmlproject.com" class="link-button">Play Games</a>
-    <a href="https://youtu.be/ufwLANtaFfI?si=_d-6h7C7GpmQFcbD" class="link-button">Definitely NOT a Rickroll</a>
-    <a href="https://links.thehtmlproject.com" class="link-button">Other THP access links</a>
-    <a href="https://masker.thehtmlproject.com" class="link-button">About:Blank masker</a>
-    <a href="mailto:contact@thehtmlproject.com" class="link-button">Contact me</a>
-    <a href="https://linktr.ee/@asherthetechkid" class="link-button">My Linktree</a>
+    <div class="main-links-grid">
+      <button id="discordJoinBtn" class="link-button">
+        <span id="discordText">Join the THP Discord Server</span>
+        <span id="discordCheck" class="material-symbols-outlined check-icon">check</span>
+      </button>
+      <a href="https://classic.thehtmlproject.com" class="link-button">The classic THP</a>
+      <a href="https://games.thehtmlproject.com" class="link-button">Play Games</a>
+      <a href="https://youtu.be/ufwLANtaFfI?si=_d-6h7C7GpmQFcbD" class="link-button">Definitely NOT a Rickroll</a>
+      <a href="https://links.thehtmlproject.com" class="link-button">Other THP access links</a>
+      <a href="https://masker.thehtmlproject.com" class="link-button">About:Blank masker</a>
+      <a href="mailto:contact@thehtmlproject.com" class="link-button">Contact me</a>
+    </div>
   </div>
 
   <footer>
     <p>Made with 💚 by Asher from The HTML Project</p>
     <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZUN1owVTQ0RzBHMVJVUDlMVUc5MzdaNENHMi4u">Report a Bug</a>
-  </footer>
+  </footer> 
 
-  <script src="https://assets.thehtmlproject.com/script/index/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // MESSAGE_VERSION: Change this when you update the message to trigger the blue dot for all users
+      const MESSAGE_VERSION = "2025-07-07-v1";
+
+      const updateIndicator = document.getElementById("updateIndicator");
+
+      // Check localStorage if the user has already seen this message version
+      const seenVersion = localStorage.getItem("seenMessageVersion");
+
+      if (seenVersion !== MESSAGE_VERSION) {
+        // Show blue dot
+        updateIndicator.classList.add("show");
+      }
+
+      // Mark as seen when user leaves or navigates away from the page
+      window.addEventListener("beforeunload", () => {
+        localStorage.setItem("seenMessageVersion", MESSAGE_VERSION);
+      });
+
+      // === Dark Mode toggle logic ===
+      const toggleButton = document.getElementById("darkModeToggle");
+      const toggleIcon = document.getElementById("modeIcon");
+      const body = document.body;
+
+      function enableDarkMode() {
+        body.classList.add("dark");
+        body.classList.remove("light");
+        toggleIcon.textContent = "light_mode";
+        document.getElementById("site-logo").src = "https://assets.thehtmlproject.com/img/logodark.png";
+        localStorage.setItem("darkMode", "true");
+      }
+
+      function disableDarkMode() {
+        body.classList.remove("dark");
+        body.classList.add("light");
+        toggleIcon.textContent = "dark_mode";
+        document.getElementById("site-logo").src = "https://assets.thehtmlproject.com/icon.jpeg";
+        localStorage.setItem("darkMode", "false");
+      }
+
+      const savedMode = localStorage.getItem("darkMode");
+      if (savedMode === "true") enableDarkMode();
+      else if (savedMode === "false") disableDarkMode();
+      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) enableDarkMode();
+
+      toggleButton.addEventListener("click", () => {
+        body.classList.contains("dark") ? disableDarkMode() : enableDarkMode();
+      });
+
+      // === Discord Join Button Logic (from original) ===
+      const joinBtn = document.getElementById("discordJoinBtn");
+      const checkIcon = document.getElementById("discordCheck");
+      const text = document.getElementById("discordText");
+
+      if (localStorage.getItem("joinedDiscord") === "true") {
+        joinBtn.style.display = "none";
+      }
+
+      let waitingForReturn = false;
+
+      joinBtn.addEventListener("click", () => {
+        window.open("https://discord.thehtmlproject.com", "_blank");
+        waitingForReturn = true;
+        joinBtn.classList.add("blur");
+      });
+
+      window.addEventListener("focus", () => {
+        if (waitingForReturn) {
+          waitingForReturn = false;
+
+          setTimeout(() => {
+            text.style.display = "none";
+            checkIcon.style.display = "inline-block";
+          }, 800);
+
+          setTimeout(() => {
+            joinBtn.classList.add("fadeOut");
+          }, 1800);
+
+          setTimeout(() => {
+            joinBtn.style.display = "none";
+            localStorage.setItem("joinedDiscord", "true");
+          }, 3000);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
